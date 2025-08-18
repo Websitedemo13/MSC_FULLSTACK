@@ -1,5 +1,6 @@
 🚀 MSC Full-Stack Educational Platform
 <div align="center">
+  
 ![alt text](https://img.shields.io/badge/Next.js-14+-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 
 ![alt text](https://img.shields.io/badge/Go-1.22+-00ADD8?style=for-the-badge&logo=go)
