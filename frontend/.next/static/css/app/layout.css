@@ -1154,6 +1154,15 @@ video {
 .min-h-svh {
   min-height: 100svh;
 }
+.min-h-\[10\.5rem\] {
+  min-height: 10.5rem;
+}
+.min-h-\[\.5rem\] {
+  min-height: .5rem;
+}
+.min-h-\[1\.5rem\] {
+  min-height: 1.5rem;
+}
 .w-0 {
   width: 0px;
 }

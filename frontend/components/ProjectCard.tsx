@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
 interface ProjectCardProps {
-  id: string
+  id?: string
+  slug: string
   title: string
   description: string
   image: string
@@ -66,8 +67,8 @@ const ProjectCard = ({ id, title, description, image, category, mentors }: Proje
                   <Image
                     src={mentor.avatar || "/placeholder.svg"}
                     alt={mentor.name}
-                    width={32}
-                    height={32}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-cover"
                   />
                 </div>

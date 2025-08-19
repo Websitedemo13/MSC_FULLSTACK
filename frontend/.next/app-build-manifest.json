@@ -21,15 +21,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
     ],
-    "/register/page": [
+    "/du-an/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/register/page.js"
+      "static/chunks/app/du-an/page.js"
     ],
-    "/login/page": [
+    "/lien-he/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
+      "static/chunks/app/lien-he/page.js"
     ]
   }
 }

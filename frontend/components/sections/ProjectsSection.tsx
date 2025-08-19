@@ -11,6 +11,7 @@ const ProjectsSection = () => {
 
   const projects = [
   {
+     id: "fdeli",
     slug:"Fdeli",
     title: "🛠️ Dự án: Công ty TNHH F Deli",
     description: "👉Mentoring & Coaching: Chuẩn hoá quy trình làm việc.",
@@ -24,9 +25,11 @@ const ProjectsSection = () => {
     ],
   },
   {
+    
     id: "2",
+    slug: "Happyland",
     title: "🛠️ Dự án: Khu du lịch Happy Land",
-    description: "🎯 Đào tạo đội ngũ Sales & Marketing, nâng cao kỹ năng giao tiếp, bán hàng và chăm sóc khách hàng trong môi trường du lịch chuyên nghiệp.",
+    description: "👉Mentoring & Coaching: Đội ngũ Quản lý dự án",
     instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & MSC Teams",
     image: "/Projects/Happyland.webp",
     category: "Mentoring, Training",
@@ -37,6 +40,7 @@ const ProjectsSection = () => {
   },
   {
     id: "3",
+    slug: "einstein-school",
     title: "🛠️ Dự án: Einstein School HCM - ESH",
     description: "🎯 Đào tạo đội ngũ Sales & Marketing và tư vấn tuyển sinh, xây dựng chiến lược truyền thông và chăm sóc phụ huynh chuyên sâu.",
     instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Đoàn Đức Minh",
@@ -49,6 +53,7 @@ const ProjectsSection = () => {
   },
   {
     id: "4",
+    slug: "tam-chau",
     title: "🛠️ Dự án: Tâm Châu",
     description: "🎯 Phát triển năng lực đội ngũ quản lý dự án thông qua huấn luyện thực tiễn và định hướng tư duy lãnh đạo chiến lược.",
     instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & MSCer Team",
@@ -61,6 +66,7 @@ const ProjectsSection = () => {
   },
   {
     id: "5",
+    slug: "doi-dep",
     title: "🛠️ Dự án: Đôi Dép - Không thể thiếu nhau",
     description: "🎯 Chương trình coaching cá nhân hoá giúp từng thành viên tìm lại mục tiêu, giá trị cốt lõi và phát triển năng lực quản trị cảm xúc.",
     instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Trần Lê Bảo Châu",
@@ -73,6 +79,7 @@ const ProjectsSection = () => {
   },
   {
     id: "6",
+    slug: "vnpt",
     title: "🛠️ Dự án: VNPT",
     description: "🎯 Xây dựng và lan toả văn hoá doanh nghiệp tích cực, thúc đẩy hiệu suất làm việc và tinh thần đồng đội qua chuỗi hội thảo & mentoring.",
     instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Nguyễn Chí Thành",
