@@ -1,4 +1,4 @@
-// File: D:\Website\msc\MSC_Last_Version\MSC_REBUILD\app\layout.tsx
+// File: D:\Website\msc\MSC_FULLSTACK\frontend\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
