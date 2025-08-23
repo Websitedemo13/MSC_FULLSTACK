@@ -86,7 +86,7 @@ export default function ProjectsPage() {
       status: "Hoàn thành",
       mentors: [
         { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-        { name: "MSC Teams", avatar: "/MSCers/mscteam.webp" },
+        { name: "Nguyễn Chí Thành", avatar: "/Mentors/NCT.webp" },
       ],
     },
     {

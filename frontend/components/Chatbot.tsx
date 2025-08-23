@@ -47,7 +47,7 @@ const Chatbot = () => {
       id: "courses",
       text: "📚 Khóa học nào phù hợp với tôi?",
       response:
-        "Tuyệt vời! Để tư vấn khóa học phù hợp nhất, bạn có thể cho tôi biết:\n\n🎯 Mục tiêu học tập của bạn?\n💼 Kinh nghiệm hiện tại?\n⏰ Thời gian có thể dành để học?\n\nHoặc bạn có thể xem danh sách khóa học tại: /dao-tao",
+        "Tuyệt vời! Để tư vấn khóa học phù hợp nhất, bạn có thể cho tôi biết:\n\n🎯 Mục tiêu học tập của bạn?\n💼 Kinh nghiệm hiện tại?\n⏰ Thời gian có thể dành để học?\n\nHoặc bạn có thể xem danh sách khóa học tại mục Đào tạo",
     },
     {
       id: "mentors",

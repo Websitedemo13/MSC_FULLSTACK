@@ -1,101 +1,20 @@
+// src/components/home/ProjectsSection.tsx
+
 "use client"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { useLanguage } from "../language-provider"
 import { Button } from "@/components/ui/button"
-import ProjectCard from "../ProjectCard"
+import ProjectCard from "@/components/ProjectCard" 
+import { allProjects } from "@/lib/data/projects" // Import dữ liệu từ file data
+
+// Lấy 6 dự án đầu tiên từ nguồn dữ liệu để hiển thị
+const featuredProjects = allProjects.slice(0, 6);
 
 const ProjectsSection = () => {
-  const { t } = useLanguage()
-
-  const projects = [
-  {
-     id: "fdeli",
-    slug:"Fdeli",
-    title: "🛠️ Dự án: Công ty TNHH F Deli",
-    description: "👉Mentoring & Coaching: Chuẩn hoá quy trình làm việc.",
-    
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & MSC Teams",
-    image: "/Projects/Fdeli.webp",
-    category: "Mentoring",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "ThS. Đoàn Đức Minh", avatar: "/Mentors/DDM.webp" },
-    ],
-  },
-  {
-    
-    id: "2",
-    slug: "Happyland",
-    title: "🛠️ Dự án: Khu du lịch Happy Land",
-    description: "👉Mentoring & Coaching: Đội ngũ Quản lý dự án",
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & MSC Teams",
-    image: "/Projects/Happyland.webp",
-    category: "Mentoring, Training",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "MSC Teams", avatar: "/MSCers/mscteam.webp" },
-    ],
-  },
-  {
-    id: "3",
-    slug: "einstein-school",
-    title: "🛠️ Dự án: Einstein School HCM - ESH",
-    description: "🎯 Đào tạo đội ngũ Sales & Marketing và tư vấn tuyển sinh, xây dựng chiến lược truyền thông và chăm sóc phụ huynh chuyên sâu.",
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Đoàn Đức Minh",
-    image: "/Projects/einsteinschool.webp",
-    category: "Giáo dục",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "Th.S Đoàn Đức Minh", avatar: "/Mentors/DDM.webp" },
-    ],
-  },
-  {
-    id: "4",
-    slug: "tam-chau",
-    title: "🛠️ Dự án: Tâm Châu",
-    description: "🎯 Phát triển năng lực đội ngũ quản lý dự án thông qua huấn luyện thực tiễn và định hướng tư duy lãnh đạo chiến lược.",
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & MSCer Team",
-    image: "/Projects/Tam-Chau.webp",
-    category: "Quản lý dự án",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "MSC Teams", avatar: "/MSCers/mscteam.webp" },
-    ],
-  },
-  {
-    id: "5",
-    slug: "doi-dep",
-    title: "🛠️ Dự án: Đôi Dép - Không thể thiếu nhau",
-    description: "🎯 Chương trình coaching cá nhân hoá giúp từng thành viên tìm lại mục tiêu, giá trị cốt lõi và phát triển năng lực quản trị cảm xúc.",
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Trần Lê Bảo Châu",
-    image: "/Projects/DoiDep.webp",
-    category: "Coaching",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "Trần Lê Bảo Châu", avatar: "/Mentors/TLBC.webp" },
-    ],
-  },
-  {
-    id: "6",
-    slug: "vnpt",
-    title: "🛠️ Dự án: VNPT",
-    description: "🎯 Xây dựng và lan toả văn hoá doanh nghiệp tích cực, thúc đẩy hiệu suất làm việc và tinh thần đồng đội qua chuỗi hội thảo & mentoring.",
-    instructors: "🧑‍🏫 Ban Giảng Huấn: Phan Huỳnh Anh & Nguyễn Chí Thành",
-    image: "/Projects/VNPT.webp",
-    category: "Workshop",
-    mentors: [
-      { name: "TS. Phan Huỳnh Anh", avatar: "/Mentors/PHA.webp" },
-      { name: "Nguyễn Chí Thành", avatar: "/Mentors/NCT.webp" },
-    ],
-  },
-]
-
-
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container">
+    <section className="py-20 bg-gray-50 dark:bg-neutral-900">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +31,7 @@ const ProjectsSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
@@ -120,7 +39,7 @@ const ProjectsSection = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <ProjectCard {...project} />
+              <ProjectCard project={project} />
             </motion.div>
           ))}
         </div>
@@ -133,7 +52,7 @@ const ProjectsSection = () => {
           className="text-center"
         >
           <Link href="/du-an">
-            <Button size="lg" className="btn-primary">
+            <Button size="lg" className="bg-blue-800 hover:bg-blue-900 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold px-8 py-6 text-base">
               Xem tất cả dự án
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -144,4 +63,4 @@ const ProjectsSection = () => {
   )
 }
 
-export default ProjectsSection
+export default ProjectsSection;
