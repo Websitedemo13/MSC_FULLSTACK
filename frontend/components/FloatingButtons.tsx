@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowUp, MessageCircle, Phone, Facebook, Zap, Sparkles, ChevronUp, ChevronDown } from "lucide-react"
+// --- SỬA 1: Dọn dẹp các import không còn sử dụng ---
+import { ArrowUp, MessageCircle, Sparkles, ChevronUp, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Chatbot from "./Chatbot"
+import Image from "next/image"
 
 const FloatingButtons = () => {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -26,19 +28,19 @@ const FloatingButtons = () => {
 
   const socialButtons = [
     {
-      icon: Facebook,
+      iconSrc: "/icons/facebook.png", 
       label: "Facebook",
       color: "from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800",
       action: () => window.open("https://facebook.com/msccenter", "_blank"),
     },
     {
-      icon: Zap,
+      iconSrc: "/icons/zalo.png",
       label: "Zalo",
       color: "from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600",
       action: () => window.open("https://zalo.me/msccenter", "_blank"),
     },
     {
-      icon: Phone,
+      iconSrc: "/icons/phone.png",
       label: "Hotline",
       color: "from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700",
       action: () => window.open("tel:(+84) 329 381 489", "_self"),
@@ -88,10 +90,16 @@ const FloatingButtons = () => {
                 >
                   <Button
                     size="sm"
-                    className={`w-14 h-14 rounded-full bg-gradient-to-r ${button.color} shadow-lg hover:shadow-xl transition-all duration-300 p-0 border-2 border-white/20`}
+                    // --- SỬA 2: Thêm class để căn giữa hình ảnh ---
+                    className={`w-14 h-14 rounded-full bg-gradient-to-r ${button.color} shadow-lg hover:shadow-xl transition-all duration-300 p-0 border-2 border-white/20 flex items-center justify-center`}
                     onClick={button.action}
                   >
-                    <button.icon className="h-6 w-6" />
+                   <Image
+                      src={button.iconSrc}
+                      alt={button.label}
+                      width={24}
+                      height={24}
+                    />
                   </Button>
 
                   {/* Tooltip */}
@@ -106,6 +114,9 @@ const FloatingButtons = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Chatbot Button & Scroll to Top Button (Giữ nguyên) */}
+        {/* ... (phần code còn lại của bạn đã rất tốt, tôi giữ nguyên chúng) ... */}
 
         {/* Chatbot Button */}
         <AnimatePresence>
