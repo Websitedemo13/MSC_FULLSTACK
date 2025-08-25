@@ -64,22 +64,98 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white">
-        <div className="container">
-          <motion.div 
-            className="text-center max-w-4xl mx-auto"
+      {/* Enhanced Hero Section */}
+      <section className="relative py-32 bg-gradient-to-br from-blue-900 via-purple-900 to-teal-900 text-white overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 bg-white/5 rounded-full"
+              animate={{
+                x: [0, 100, 0],
+                y: [0, -100, 0],
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div
+            className="text-center max-w-5xl mx-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block bg-white/10 p-4 rounded-full mb-6">
-              <Send className="h-12 w-12 text-white" />
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif">Kết nối với MSC</h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 p-4 rounded-full mb-8"
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Send className="h-16 w-16 text-white" />
+            </motion.div>
+
+            <motion.h1
+              className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 font-serif"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <span className="bg-gradient-to-r from-white via-blue-200 to-orange-300 bg-clip-text text-transparent">
+                Kết nối
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-orange-300 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                với MSC
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-2xl md:text-3xl text-blue-100 mb-12 leading-relaxed max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              style={{
+                textShadow: '0 0 20px rgba(255,255,255,0.3)',
+              }}
+            >
               Chúng tôi luôn sẵn sàng lắng nghe và tư vấn. Hãy để lại lời nhắn hoặc liên hệ trực tiếp để bắt đầu hành trình phát triển của bạn.
-            </p>
+            </motion.p>
+
+            {/* Quick Contact Stats */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-6 mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              {[
+                { stat: "< 2h", label: "Phản hồi nhanh" },
+                { stat: "24/7", label: "Hỗ trợ tư vấn" },
+                { stat: "100%", label: "Miễn phí" }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center backdrop-blur-sm bg-white/10 rounded-xl px-6 py-4 border border-white/20"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="text-2xl font-bold text-orange-300">{item.stat}</div>
+                  <div className="text-sm text-blue-200">{item.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
