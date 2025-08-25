@@ -26,13 +26,26 @@ class AuthManager {
     const token = localStorage.getItem('admin_token')
     if (token) {
       try {
-        const response = await apiClient.getProfile()
-        this.setState({
-          user: response.data,
-          token,
-          isAuthenticated: true,
-          isLoading: false,
-        })
+        // Try to get stored user data for mock auth
+        const storedUser = localStorage.getItem('admin_user')
+        if (storedUser) {
+          const user = JSON.parse(storedUser)
+          this.setState({
+            user,
+            token,
+            isAuthenticated: true,
+            isLoading: false,
+          })
+        } else {
+          // Fallback to API call if available
+          const response = await apiClient.getProfile()
+          this.setState({
+            user: response.data,
+            token,
+            isAuthenticated: true,
+            isLoading: false,
+          })
+        }
       } catch (error) {
         this.logout()
       }
