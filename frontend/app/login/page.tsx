@@ -251,6 +251,18 @@ export default function LoginPage() {
                 </Button>
               </div>
 
+              {/* Demo Credentials */}
+              <div className="p-4 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+                <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2 flex items-center">
+                  🎯 Tài khoản demo
+                </h3>
+                <div className="space-y-1 text-xs text-blue-700 dark:text-blue-300">
+                  <div><strong>Demo:</strong> demo@msc.edu.vn / demo123</div>
+                  <div><strong>User:</strong> user@msc.edu.vn / user123</div>
+                  <div><strong>Student:</strong> student@msc.edu.vn / student123</div>
+                </div>
+              </div>
+
               {/* Register Link */}
               <div className="text-center pt-4">
                 <p className="text-gray-600 dark:text-gray-300">
