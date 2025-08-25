@@ -19,11 +19,32 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate login process
+
+    // Demo accounts for testing
+    const demoAccounts = [
+      { email: 'demo@msc.edu.vn', password: 'demo123', name: 'Demo User' },
+      { email: 'user@msc.edu.vn', password: 'user123', name: 'MSC User' },
+      { email: 'student@msc.edu.vn', password: 'student123', name: 'Student User' }
+    ]
+
+    // Simulate API call delay
     setTimeout(() => {
+      const account = demoAccounts.find(acc => acc.email === email && acc.password === password)
+
+      if (account) {
+        // Store login state
+        localStorage.setItem('user_token', `token-${Date.now()}`)
+        localStorage.setItem('user_data', JSON.stringify(account))
+
+        // Show success message and redirect
+        alert(`Đăng nhập thành công! Chào mừng ${account.name}`)
+        window.location.href = '/profile'
+      } else {
+        alert('Email hoặc mật khẩu không đúng.\n\nTài khoản demo:\n• demo@msc.edu.vn / demo123\n• user@msc.edu.vn / user123\n• student@msc.edu.vn / student123')
+      }
+
       setIsLoading(false)
-      console.log("Login attempt:", { email, password })
-    }, 2000)
+    }, 1500)
   }
 
   const benefits = [
