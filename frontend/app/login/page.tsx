@@ -19,11 +19,32 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate login process
+
+    // Demo accounts for testing
+    const demoAccounts = [
+      { email: 'demo@msc.edu.vn', password: 'demo123', name: 'Demo User' },
+      { email: 'user@msc.edu.vn', password: 'user123', name: 'MSC User' },
+      { email: 'student@msc.edu.vn', password: 'student123', name: 'Student User' }
+    ]
+
+    // Simulate API call delay
     setTimeout(() => {
+      const account = demoAccounts.find(acc => acc.email === email && acc.password === password)
+
+      if (account) {
+        // Store login state
+        localStorage.setItem('user_token', `token-${Date.now()}`)
+        localStorage.setItem('user_data', JSON.stringify(account))
+
+        // Show success message and redirect
+        alert(`Đăng nhập thành công! Chào mừng ${account.name}`)
+        window.location.href = '/profile'
+      } else {
+        alert('Email hoặc mật khẩu không đúng.\n\nTài khoản demo:\n• demo@msc.edu.vn / demo123\n• user@msc.edu.vn / user123\n• student@msc.edu.vn / student123')
+      }
+
       setIsLoading(false)
-      console.log("Login attempt:", { email, password })
-    }, 2000)
+    }, 1500)
   }
 
   const benefits = [
@@ -228,6 +249,18 @@ export default function LoginPage() {
                   />
                   Đăng nhập với Facebook
                 </Button>
+              </div>
+
+              {/* Demo Credentials */}
+              <div className="p-4 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+                <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2 flex items-center">
+                  🎯 Tài khoản demo
+                </h3>
+                <div className="space-y-1 text-xs text-blue-700 dark:text-blue-300">
+                  <div><strong>Demo:</strong> demo@msc.edu.vn / demo123</div>
+                  <div><strong>User:</strong> user@msc.edu.vn / user123</div>
+                  <div><strong>Student:</strong> student@msc.edu.vn / student123</div>
+                </div>
               </div>
 
               {/* Register Link */}

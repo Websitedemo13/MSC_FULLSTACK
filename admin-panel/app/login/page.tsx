@@ -132,6 +132,18 @@ export default function LoginPage() {
                 Khôi phục tại đây
               </Link>
             </div>
+
+            {/* Demo Credentials */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <h3 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+                🎯 Tài khoản demo:
+              </h3>
+              <div className="space-y-1 text-xs text-blue-700 dark:text-blue-300">
+                <div><strong>Admin:</strong> admin@msc.edu.vn / admin123</div>
+                <div><strong>Editor:</strong> editor@msc.edu.vn / editor123</div>
+                <div><strong>Partner:</strong> demo@msc.edu.vn / demo123</div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

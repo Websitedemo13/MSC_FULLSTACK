@@ -26,13 +26,26 @@ class AuthManager {
     const token = localStorage.getItem('admin_token')
     if (token) {
       try {
-        const response = await apiClient.getProfile()
-        this.setState({
-          user: response.data,
-          token,
-          isAuthenticated: true,
-          isLoading: false,
-        })
+        // Try to get stored user data for mock auth
+        const storedUser = localStorage.getItem('admin_user')
+        if (storedUser) {
+          const user = JSON.parse(storedUser)
+          this.setState({
+            user,
+            token,
+            isAuthenticated: true,
+            isLoading: false,
+          })
+        } else {
+          // Fallback to API call if available
+          const response = await apiClient.getProfile()
+          this.setState({
+            user: response.data,
+            token,
+            isAuthenticated: true,
+            isLoading: false,
+          })
+        }
       } catch (error) {
         this.logout()
       }
@@ -65,14 +78,66 @@ class AuthManager {
   public async login(email: string, password: string): Promise<{ success: boolean; error?: string }> {
     try {
       this.setState({ isLoading: true })
-      
-      const response = await apiClient.login(email, password)
-      const { token, user } = response.data
+
+      // Demo accounts for testing
+      const demoAccounts = [
+        {
+          email: 'admin@msc.edu.vn',
+          password: 'admin123',
+          user: {
+            id: '1',
+            email: 'admin@msc.edu.vn',
+            name: 'MSC Admin',
+            roles: [{ id: '1', name: 'admin', permissions: [] }],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          }
+        },
+        {
+          email: 'editor@msc.edu.vn',
+          password: 'editor123',
+          user: {
+            id: '2',
+            email: 'editor@msc.edu.vn',
+            name: 'MSC Editor',
+            roles: [{ id: '2', name: 'editor', permissions: [] }],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          }
+        },
+        {
+          email: 'demo@msc.edu.vn',
+          password: 'demo123',
+          user: {
+            id: '3',
+            email: 'demo@msc.edu.vn',
+            name: 'Demo User',
+            roles: [{ id: '3', name: 'partner', permissions: [] }],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          }
+        }
+      ]
+
+      // Find matching demo account
+      const account = demoAccounts.find(acc => acc.email === email && acc.password === password)
+
+      if (!account) {
+        this.setState({ isLoading: false })
+        return {
+          success: false,
+          error: 'Email hoặc mật khẩu không đúng. Thử: admin@msc.edu.vn / admin123'
+        }
+      }
+
+      // Generate mock token
+      const token = `mock-token-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 
       localStorage.setItem('admin_token', token)
-      
+      localStorage.setItem('admin_user', JSON.stringify(account.user))
+
       this.setState({
-        user,
+        user: account.user,
         token,
         isAuthenticated: true,
         isLoading: false,
@@ -81,15 +146,16 @@ class AuthManager {
       return { success: true }
     } catch (error: any) {
       this.setState({ isLoading: false })
-      return { 
-        success: false, 
-        error: error.response?.data?.message || 'Đăng nhập thất bại' 
+      return {
+        success: false,
+        error: 'Có lỗi xảy ra khi đăng nhập'
       }
     }
   }
 
   public logout() {
     localStorage.removeItem('admin_token')
+    localStorage.removeItem('admin_user')
     this.setState({
       user: null,
       token: null,
