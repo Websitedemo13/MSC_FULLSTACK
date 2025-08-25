@@ -155,6 +155,7 @@ class AuthManager {
 
   public logout() {
     localStorage.removeItem('admin_token')
+    localStorage.removeItem('admin_user')
     this.setState({
       user: null,
       token: null,
