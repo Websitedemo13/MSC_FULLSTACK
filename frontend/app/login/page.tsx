@@ -36,9 +36,12 @@ export default function LoginPage() {
         localStorage.setItem('user_token', `token-${Date.now()}`)
         localStorage.setItem('user_data', JSON.stringify(account))
 
-        // Show success message and redirect
+        // Determine user ID from email
+        const userId = account.email.split('@')[0] // demo, user, student
+
+        // Show success message and redirect to user-specific profile
         alert(`Đăng nhập thành công! Chào mừng ${account.name}`)
-        window.location.href = '/profile'
+        window.location.href = `/user/${userId}`
       } else {
         alert('Email hoặc mật khẩu không đúng.\n\nTài khoản demo:\n• demo@msc.edu.vn / demo123\n• user@msc.edu.vn / user123\n• student@msc.edu.vn / student123')
       }
