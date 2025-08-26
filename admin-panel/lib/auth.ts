@@ -144,8 +144,10 @@ class AuthManager {
       // Generate mock token
       const token = `mock-token-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 
-      localStorage.setItem('admin_token', token)
-      localStorage.setItem('admin_user', JSON.stringify(account.user))
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('admin_token', token)
+        localStorage.setItem('admin_user', JSON.stringify(account.user))
+      }
 
       this.setState({
         user: account.user,
@@ -165,8 +167,10 @@ class AuthManager {
   }
 
   public logout() {
-    localStorage.removeItem('admin_token')
-    localStorage.removeItem('admin_user')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('admin_user')
+    }
     this.setState({
       user: null,
       token: null,
