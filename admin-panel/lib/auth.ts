@@ -19,10 +19,21 @@ class AuthManager {
   private listeners: ((state: AuthState) => void)[] = []
 
   constructor() {
-    this.initAuth()
+    // Only initialize on client side
+    if (typeof window !== 'undefined') {
+      this.initAuth()
+    } else {
+      this.setState({ isLoading: false })
+    }
   }
 
   private async initAuth() {
+    // Additional check for browser environment
+    if (typeof window === 'undefined') {
+      this.setState({ isLoading: false })
+      return
+    }
+
     const token = localStorage.getItem('admin_token')
     if (token) {
       try {
