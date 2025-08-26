@@ -38,7 +38,7 @@ class AuthManager {
     if (token) {
       try {
         // Try to get stored user data for mock auth
-        const storedUser = localStorage.getItem('admin_user')
+        const storedUser = typeof window !== 'undefined' ? localStorage.getItem('admin_user') : null
         if (storedUser) {
           const user = JSON.parse(storedUser)
           this.setState({
