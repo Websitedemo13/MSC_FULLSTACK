@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { 
@@ -20,15 +20,16 @@ import { DashboardStats } from '@/types'
 import DashboardLayout from '@/components/layout/DashboardLayout'
 
 export default function DashboardPage() {
+  const router = useRouter()
   const { isAuthenticated, isLoading, user, canManageContent } = useAuth()
   const [stats, setStats] = useState<DashboardStats | null>(null)
   const [statsLoading, setStatsLoading] = useState(true)
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      redirect('/login')
+      router.push('/login')
     }
-  }, [isAuthenticated, isLoading])
+  }, [isAuthenticated, isLoading, router])
 
   useEffect(() => {
     const fetchStats = async () => {

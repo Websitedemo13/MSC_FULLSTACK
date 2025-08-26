@@ -19,15 +19,26 @@ class AuthManager {
   private listeners: ((state: AuthState) => void)[] = []
 
   constructor() {
-    this.initAuth()
+    // Only initialize on client side
+    if (typeof window !== 'undefined') {
+      this.initAuth()
+    } else {
+      this.setState({ isLoading: false })
+    }
   }
 
   private async initAuth() {
+    // Additional check for browser environment
+    if (typeof window === 'undefined') {
+      this.setState({ isLoading: false })
+      return
+    }
+
     const token = localStorage.getItem('admin_token')
     if (token) {
       try {
         // Try to get stored user data for mock auth
-        const storedUser = localStorage.getItem('admin_user')
+        const storedUser = typeof window !== 'undefined' ? localStorage.getItem('admin_user') : null
         if (storedUser) {
           const user = JSON.parse(storedUser)
           this.setState({
@@ -133,8 +144,10 @@ class AuthManager {
       // Generate mock token
       const token = `mock-token-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 
-      localStorage.setItem('admin_token', token)
-      localStorage.setItem('admin_user', JSON.stringify(account.user))
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('admin_token', token)
+        localStorage.setItem('admin_user', JSON.stringify(account.user))
+      }
 
       this.setState({
         user: account.user,
@@ -154,8 +167,10 @@ class AuthManager {
   }
 
   public logout() {
-    localStorage.removeItem('admin_token')
-    localStorage.removeItem('admin_user')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('admin_user')
+    }
     this.setState({
       user: null,
       token: null,
