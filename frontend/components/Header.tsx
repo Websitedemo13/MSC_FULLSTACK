@@ -93,6 +93,7 @@ const Header = () => {
                 <DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" size="sm" className="flex items-center space-x-1 text-white hover:bg-white/20 h-7"><span className="text-sm">{language === "vi" ? "🇻🇳" : "🇬🇧"}</span><ChevronDown className="h-3 w-3" /></Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem onClick={() => setLanguage("vi")}>🇻🇳 Tiếng Việt</DropdownMenuItem><DropdownMenuItem onClick={() => setLanguage("en")}>🇬🇧 English</DropdownMenuItem></DropdownMenuContent></DropdownMenu>
                 <Link href="/login" className="hidden sm:block"><Button variant="ghost" size="sm" className="text-white hover:bg-white/20 h-7 text-xs"><LogIn className="h-3 w-3 mr-1" />{t("nav.login")}</Button></Link>
                 <Link href="/register" className="hidden sm:block"><Button size="sm" className="bg-white text-blue-600 hover:bg-blue-50 h-7 text-xs"><UserPlus className="h-3 w-3 mr-1" />{t("nav.register")}</Button></Link>
+                <Link href="/scan" className="hidden sm:block"><Button variant="ghost" size="sm" className="text-white hover:bg-white/20 h-7 text-xs border border-white/30">📱 QR Scanner</Button></Link>
                 <Link href="/profile" className="hidden sm:block"><Button variant="ghost" size="sm" className="text-white hover:bg-white/20 h-7 text-xs border border-white/30"><User className="h-3 w-3 mr-1" />{t("nav.profile")}</Button></Link>
               </div>
             </div>
